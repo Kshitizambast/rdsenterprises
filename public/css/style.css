@@ -1,0 +1,23 @@
+.bg-style{
+	background-size: cover !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+	width: auto;
+	height: 15rem;
+}
+
+.bg-style-contain{
+	background-size: contain !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+	width: auto;
+	height: 100%;
+}
+
+.carousal-bg{
+	background-size: contain !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+	width: auto;
+	height: 35vh;
+}
