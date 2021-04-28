@@ -3,7 +3,6 @@
 	
 	@if ($message = Session::get('success'))
 		<div class="alert alert-success alert-block">
-			
 		        <strong>{{ $message }}</strong>
 		</div>
 	@endif
@@ -63,7 +62,7 @@
 						    <p class="card-text">{{$book->description}}</p>
 						    <h6 class="card-text"><b class="text-muted">{{App\Models\LanguageCategory::find($book->language_category_id)->language_title}}</b></h6>
 						    <div class="d-grid gap-2">
-							  <a class="btn btn-primary" type="button" href="{{$book->slug}}">Buy Now</a>
+							  <a class="btn btn-primary" type="button" href="book/{{$book->id}}">Buy Now</a>
 							</div>
 						  </div>
   	  				</div>

@@ -41,7 +41,6 @@ class PageController extends Controller
     public function checkout(Request $request)
     {
     	$this->validate($request, [
-
     		'student_name' => 'required|string',
     		'parents_name' => 'required|string',
     		'admission_number' => 'required|numeric',

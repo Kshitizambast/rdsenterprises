@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration
             $table->string('title');
             $table->unsignedBigInteger('language_category_id');
             $table->unsignedBigInteger('class_books_id');
-            $table->string('slug');
+            $table->string('slug')->default(null);
             $table->string('book_image_url');
             $table->text('description');
             $table->float('price');

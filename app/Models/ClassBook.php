@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class ClassBook extends Model
 {
     use HasFactory;
+
+    public function books()
+    {
+    	return $this->hasMany(Book::class);
+    }
+
+    public function students()
+    {
+    	return $this->hasMany(Student::class);
+    }
+
 }

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class LanguageCategory extends Model
 {
     use HasFactory;
+
+    public function books()
+    {
+    	return $this->hasMany(ClassBook::class);
+    }
 }
