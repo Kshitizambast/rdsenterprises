@@ -7,6 +7,8 @@ use App\Models\Order;
 use App\Models\Student;
 use App\Models\Book;
 use App\Models\Payment;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -14,7 +16,7 @@ class AdminController extends Controller
     public function index()
     {
     	$orders = Order::all();
-    	//dd($orders);
+	//dd($orders);
     	return view('admin.index')->with('orders', $orders);
     }
 
@@ -43,5 +45,27 @@ class AdminController extends Controller
     	$payments = Payment::all();
     	//dd($orders);
     	return view('admin.payment')->with('payments', $payments);
+    }
+
+    public function adminProfile()
+    {
+    	return view('admin.profile');
+    }
+
+    public function updateProfile(Request $request)
+    {
+    	$this->validate($request, [
+    		'password'     => 'required|min:8',
+    		'new_password' => 'required|confirmed|min:8'
+    	]);
+
+    	if(Hash::check($request['password'], auth()->user()->password)){
+    		User::find(auth()->user()->id)
+    			  ->update([
+    			  		'password' => Hash::make($request['new_password'])
+    			  ]);
+		    return back()->with('success', 'Profile has been updated');
+    	}
+    	return back()->with('danger', 'Something went wrong');
     }
 }
