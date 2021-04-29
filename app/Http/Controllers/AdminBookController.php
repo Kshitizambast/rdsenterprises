@@ -27,6 +27,7 @@ class AdminBookController extends Controller
     		'description'           => 'required|string|max:1255',
     		'price'                 =>'required|numeric',
     		'available'             =>  'required|numeric',
+    		'slug'					=> 'required|string'
     	]);
 
     	Book::create([
@@ -37,6 +38,7 @@ class AdminBookController extends Controller
     		'description'           => $request['description'],
     		'price'                 => $request['price'],
     		'available'             => $request['available'],
+    		'slug'					=> $request['slug']
     	]);
 
     	return redirect('/admin/books')->with('success', 'Book has been uploaded');

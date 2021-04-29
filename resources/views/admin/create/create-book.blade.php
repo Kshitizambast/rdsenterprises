@@ -70,6 +70,7 @@
           Please select a valid option.
         </div>
   </div>
+  <input type="hidden" name="slug" value="/books/check">
   <hr>
   <div class="col-12">
     <button class="btn btn-primary" type="submit">Add Book</button>

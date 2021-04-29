@@ -2,7 +2,7 @@
 @section('content')
 <div class="jumbotron mt-5">
   <h1 class="display-4">Hello, {{auth()->user()->name}}!</h1>
-  <p class="lead">You have recieved 10 payments and 10 orders today. Change the order status so that customer can track the order</p>
+  <p class="lead">You have recieved {{count($payments)}} payments and {{count($orders)}} orders till now. Change the order status so that customer can track the order</p>
   <hr class="my-4">
   <p>Click on the menu in the side bar to navigate through the app. You can add, edit or delete any order, student and product</p>
   <p class="lead">

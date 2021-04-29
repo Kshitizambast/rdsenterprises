@@ -16,8 +16,9 @@ class AdminController extends Controller
     public function index()
     {
     	$orders = Order::all();
+    	$payments = Payment::all();
 	//dd($orders);
-    	return view('admin.index')->with('orders', $orders);
+    	return view('admin.index')->with(['orders'=>$orders, 'payments'=>$payments]);
     }
 
     public function students()
@@ -50,6 +51,21 @@ class AdminController extends Controller
     public function adminProfile()
     {
     	return view('admin.profile');
+    }
+
+    public function updateUser(Request $request)
+    {
+    	$this->validate($request, [
+    		 'name' => 'required|min:4',
+             'email' => 'required|email',
+    	]);
+
+    	User::find(auth()->user()->id)->update([
+    		'name' => $request['name'],
+    		'email'=> $request['email']
+    	]);
+
+    	return back()->with('success', 'Profile has been updated');
     }
 
     public function updateProfile(Request $request)

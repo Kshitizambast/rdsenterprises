@@ -50,5 +50,6 @@ Route::middleware('auth')->group(function(){
 		Route::post('books/delete', [AdminBookController::class, 'deleteBook']);
 		Route::get('profile', [AdminController::class, 'adminProfile']);
 		Route::post('profile/update', [AdminController::class, 'updateProfile'])->name('update_profile');
+		Route::post('profile/update-user', [AdminController::class, 'updateUser'])->name('update_user_profile');
 	});
 });

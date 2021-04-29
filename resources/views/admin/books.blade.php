@@ -8,7 +8,6 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Class</th>
             <th>Language</th>
             <th>Description</th>
             <th>Available</th>
@@ -20,7 +19,6 @@
     	@foreach($books as $book)
             <tr>
                 <td>{{$book->title}}</td>
-                <td>{{$book->class_books->class_title}}</td>
                 <td>{{$book->language_category->language_title}}</td>
                 <td>
                 	<div class="w-75">
