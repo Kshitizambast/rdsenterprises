@@ -7,6 +7,7 @@
 <table id="example" class="display" style="width:100%">
     <thead>
         <tr>
+             <th><input type="checkbox" class="selectAll" name="selectAll" value="all"></th>
             <th>Name</th>
             <th>Language</th>
             <th>Description</th>
@@ -18,6 +19,7 @@
     <tbody>
     	@foreach($books as $book)
             <tr>
+                <td></td>
                 <td>{{$book->title}}</td>
                 <td>{{$book->language_category->language_title}}</td>
                 <td>
@@ -47,10 +49,6 @@
             </tr>
         @endforeach
 </table>
-<script type="text/javascript">
-	$(document).ready(function() {
-    	$('#example').DataTable();
-} );
-</script>
+
 </div>
 @endsection

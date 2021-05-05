@@ -40,11 +40,12 @@ class PageController extends Controller
 
     public function checkout(Request $request)
     {
+
     	$this->validate($request, [
     		'student_name' => 'required|string',
     		'parents_name' => 'required|string',
     		'admission_number' => 'required|numeric',
-    		'email'			=> 'email',
+    		'email'			=> 'required|email',
     		'address'		=> 'required|string|',
     		'contact_number' => 'required|numeric',
     		'alternet_number' => 'numeric',
@@ -53,13 +54,26 @@ class PageController extends Controller
     	]);
 
 
-    	$checkStudent = Student::where('admission_number', $request['admission_number'])
+    	$checkStudent = Student::where([
+    									'admission_number' => $request['admission_number'],
+    									'email'			   => $request['email']
+    								])
     			 				 ->first();
 		 $book = Book::find($request['book_id']);
+
+		 $service_fee = $book->price * 0.02;
+
+		 $payble = $book->price + $service_fee;
+
 
 		 //dd($request);
 
 	    if($checkStudent == null){
+	    	
+	    	$this->validate($request, [
+	    						'email' => 'required|email|unique:students',
+	    						'admission_number' => 'required|numeric|unique:students'
+	    						]);
 	    	$student = Student::create([
 			    		'student_name' => $request['student_name'],
 			    		'parents_name' => $request['parents_name'],
@@ -71,35 +85,51 @@ class PageController extends Controller
 			    		'class_books_id' => $request['class_books_id']
 			    	]);	
 
-	    	Order::create([
-	    		'book_id' => $request['book_id'],
-	    		'student_id' => $student->id,
-	    		'address'	 => $request['address'],
-	    		'payble'	=> $book->price,
-	    		'order_status_id' => 1
-	    	]);
+	    	$order = Order::create([
+			    		'book_id' => $request['book_id'],
+			    		'student_id' => $student->id,
+			    		'address'	 => $request['address'],
+			    		'service_fee'=> $service_fee,
+			    		'payble'	=>  $payble,
+			    		'order_status_id' => 1
+			    	]);
 	    } 
 	    else{
-	    	Order::create([
-	    		'book_id' => $request['book_id'],
-	    		'student_id' => $checkStudent->id,
-	    		'address'	 => $request['address'],
-	    		'payble'	=> $book->price,
-	    		'order_status_id' => 1
-	    	]);
+	    	$order = Order::create([
+			    		'book_id' => $request['book_id'],
+			    		'student_id' => $checkStudent->id,
+			    		'address'	 => $request['address'],
+			    		'service_fee'=> $service_fee,
+			    		'payble'	=>  $payble,
+			    		'order_status_id' => 1
+			    	]);
 	    }
 
 
-	    return redirect('/')->with('success', 'Order has been placed successfully');
-
-
-
+	    return redirect('pay-bill/'.$order->id);
 
     	//Create the student if not exist already
     	//Create Order with status placed.
     	//Payment integration (Transaction basis).
 
     	//return home with success message. 
+
+    }
+
+    public function terms()
+    {
+    	# code...
+    	return view('pages.terms');
+    }
+    public function privacy()
+    {
+    	# code...
+    	return view('pages.privacy');
+
+    }
+    public function refund()
+    {
+    	return view('pages.refund');
 
     }
 }

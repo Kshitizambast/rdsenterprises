@@ -15,8 +15,13 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->string('mihpayid');
+            $table->string('mode');
+            $table->string('status');
             $table->float('paid_amount');
             $table->date('paid_at');
+            $table->string('error_msg')->default(Null);
+            $table->string('bank_ref_number');
             $table->boolean('allowed')->default(false);
             $table->timestamps();
         });

@@ -24,4 +24,9 @@ class Book extends Model
     {
     	return $this->belongsTo(LanguageCategory::class);
     }
+
+    public function product_image()
+    {
+    	return $this->hasOne(ProductImage::class);
+    }
 }

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
     <div class="py-5 text-center px-5 mt-5">
-      <img class="d-block mx-auto mb-4" src="/img/logo.jpeg" alt="" width="72" height="57">
+      <img class="d-block mx-auto mb-4" src="/img/RDS_Logo-01.jpg" alt="" width="72" height="57">
       <h2>Checkout for your delivery</h2>
       <p class="lead">You are subsribing for contactless delivery. We hope you enjoy your delivery</p>
     </div>
     @include('include.messages')
-    <div class="row g-5 px-5 m-0">
+    <div class="row g-5 px-2 m-0">
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Your order</span>
@@ -18,9 +18,9 @@
 			    <div class="card-img-top bg-style" style="background-image: url({{$book->book_image_url}});"></div>
 				  <div class="card-body">
 				    <h5 class="card-title">{{$book->title}}</h5>
-				    <h3>${{$book->price}}</h3>
+				    <h3>₹{{$book->price}}</h3>
 				    <p class="card-text">{{$book->description}}</p>
-				    <p class="card-text"><small class="text-muted">Buy now and save more</small></p>
+				     <h6 class="card-text"><b class="text-muted">{{App\Models\LanguageCategory::find($book->language_category_id)->language_title}}</b></h6>
 				  </div>
 				</div>
             <div>

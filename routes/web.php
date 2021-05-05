@@ -7,6 +7,11 @@ use App\Http\Controllers\AdminBookController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ThemeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +24,9 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', [PageController::class, 'index']);
+Route::get('/terms', [PageController::class, 'terms']);
+Route::get('/privacy', [PageController::class, 'privacy']);
+Route::get('/refund', [PageController::class, 'refund']);
 
 Route::get('/book/{id}', [PageController::class, 'viewAndCheckout']);
 
@@ -31,6 +39,12 @@ Route::get('register', [RegisterController::class, 'registerForm'])->name('regis
 Route::post('login/request', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::post('register/request', [RegisterController::class, 'register'])->name('register_user');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('pdf-generate', [PDFController::class, 'index']);
+Route::get('pay-bill/{id}', [PaymentController::class, 'index']);
+Route::post('payment-status', [PaymentController::class, 'processPayment']);
+//Route::post('payment-success', [PaymentController::class, 'processPayment']);
+
 
 
 Route::middleware('auth')->group(function(){
@@ -51,5 +65,7 @@ Route::middleware('auth')->group(function(){
 		Route::get('profile', [AdminController::class, 'adminProfile']);
 		Route::post('profile/update', [AdminController::class, 'updateProfile'])->name('update_profile');
 		Route::post('profile/update-user', [AdminController::class, 'updateUser'])->name('update_user_profile');
+		Route::get('file', [ThemeController::class, 'create']); 
+		Route::post('file', [ThemeController::class, 'store'])->name('file');
 	});
 });

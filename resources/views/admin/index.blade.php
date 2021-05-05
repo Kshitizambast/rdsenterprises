@@ -14,19 +14,22 @@
 <table id="example" class="display" style="width:100%">
     <thead>
         <tr>
-            <th>Order id</th>
+        	<th><input type="checkbox" class="selectAll" name="selectAll" value="all"></th>
+            <th>Admission Number</th>
             <th>Product</th>
             <th>Student </th>
             <th>Address</th>
             <th>Total Amount</th>
             <th>Order Status</th>
+              <th>Updated At</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
     	@foreach($orders as $order)
             <tr>
-                <td>{{$order->id}}</td>
+            	<td></td>
+                <td>{{$order->student->admission_number}}</td>
                 <td>
                 	<p>{{$order->book->title}} <br>
                 	(<b>{{$order->book->language_category->language_title}}</b>)
@@ -40,6 +43,7 @@
                 </td>
                 <td>{{$order->payble}}</td>
                 <td>{{$order->order_status->order_status_title}}</td>
+                  <td>{{$order->updated_at}}</td>
                 <td>
                 	<div class="d-flex px-3">
                 		<a class="btn btn-primary btn-sm mx-3" href="orders/edit/{{$order->id}}" data-toggle="tooltip" data-placement="top" title="Edit or Update"  data-toggle="modal" data-target="#exampleModal{{$order->id}}"><span data-feather="edit"></span></a>
@@ -53,9 +57,5 @@
             </tr>
         @endforeach
 </table>
-<script type="text/javascript">
-	$(document).ready(function() {
-    	$('#example').DataTable();
-} );
-</script>
+
 @endsection

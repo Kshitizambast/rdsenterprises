@@ -37,6 +37,12 @@
               Admin
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/file">
+              <span data-feather="layers"></span>
+              Slider Update
+            </a>
+          </li>
         </ul>
 
        

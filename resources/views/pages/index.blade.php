@@ -58,11 +58,11 @@
   	  					 <div class="card-img-top bg-style" style="background-image: url({{$book->book_image_url}});"></div>
 						  <div class="card-body">
 						    <h5 class="card-title">{{$book->title}}</h5>
-						    <h3>${{$book->price}}</h3>
+						    <h3>₹{{$book->price}}</h3>
 						    <p class="card-text">{{$book->description}}</p>
 						    <h6 class="card-text"><b class="text-muted">{{App\Models\LanguageCategory::find($book->language_category_id)->language_title}}</b></h6>
 						    <div class="d-grid gap-2">
-							  <a class="btn btn-primary" type="button" href="book/{{$book->id}}">Buy Now</a>
+							  <a class="btn btn-primary" type="button" href="/book/{{$book->id}}">Buy Now</a>
 							</div>
 						  </div>
   	  				</div>

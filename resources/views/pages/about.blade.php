@@ -5,8 +5,8 @@
 		You can order everything from books, school uniforms, school book sets, stationery, 	notebooks to accessories on our platform.</p>
       </div>
       <div class="col-md-5">
-      		<div class="bg-style-contain" style="background-image: url('/img/image1.jpeg')">
-      		</div>
+      		<img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="/img/image1.jpeg">
+      		
       </div>
   </div>
   <hr class="featurette-divider">
@@ -18,8 +18,7 @@
 				We urge all of you to stay safe and healthy.
 		</p>
       </div>
-      <div class="col-md-5 order-md-1">
-        <div class="bg-style-contain" style="background-image: url('/img/image9.png')">
-      	</div>
+      <div class="col-md-5 order-md-1 ">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="/img/image9.png">
       </div>
     </div>

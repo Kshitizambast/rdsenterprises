@@ -3,6 +3,7 @@
 @include('include.messages')
 
  <h3>Edit Your Order.</h3>
+ <button class="btn btn-info">PDF</button>
  <div class="card-body">
  	<form class="row g-3 needs-validation" method="post" action="/admin/orders/update/{{$order->id}}"  novalidate>
     @csrf

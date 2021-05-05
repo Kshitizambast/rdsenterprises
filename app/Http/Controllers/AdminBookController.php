@@ -30,6 +30,8 @@ class AdminBookController extends Controller
     		'slug'					=> 'required|string'
     	]);
 
+    	
+
     	Book::create([
     		'title'                 => $request['title'],
     		'language_category_id'  => $request['language_category_id'],

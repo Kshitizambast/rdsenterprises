@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->text('address');
             $table->unsignedInteger('payment_id')->default(null);
             $table->float('payble');
+            $table->float('service_fee');
             $table->float('paid_amount')->default(null);
             $table->unsignedInteger('order_status_id');
             $table->boolean('fullfilled')->default(false);
